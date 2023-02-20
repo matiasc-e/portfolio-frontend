@@ -1,0 +1,25 @@
+<section class="container mb-4 ">
+    <div class="d-flex justify-content-between containerSection align-items-center mt-4 containerTitle">
+        <div>
+            <h3 class="text__primary ">Skills</h3>
+        </div>
+        <button type="button"
+        class="btn__plus" 
+        data-bs-toggle="modal" data-bs-target="#btn-plus-skills"> <i class="fa-solid fa-plus"></i>
+        </button>
+    </div>
+    <div class="title__section d-flex flex-column gap-3 border__bottom pb-4">
+        <ng-container *ngFor="let data of info">
+            <div class="d-flex justify-content-between align-items-center">
+                <h4 class="text__secondary">{{data.tecnology}}</h4>
+                <div class="d-flex  gap-3">
+                    <i class="fa-solid fa-pencil "></i>
+                    <i class="fa-solid fa-trash"></i>
+                </div>
+            </div>
+            <div class="progress" role="progressbar" aria-label="Success example" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                <div class="progress-bar {{data.color}}" [style.width]="data.porcentaj"></div>
+            </div>
+        </ng-container>
+    </div>
+</section>

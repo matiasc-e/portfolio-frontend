@@ -1,0 +1,22 @@
+/* Header Styles */
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    color: #fff;
+    z-index: 1;
+    background-color: #1e2030;
+    border-bottom : 1px solid #363a4f
+}
+
+.header__logo{
+    width: 120px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.header__logo:hover {
+    transform: scale(1.03);
+}

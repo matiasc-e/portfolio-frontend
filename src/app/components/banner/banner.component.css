@@ -1,0 +1,66 @@
+/* Banner Styles */
+
+.banner__header{
+    position: relative;
+}
+
+.img__container{
+    position: absolute;
+    left: 10rem;
+    bottom: -4rem;
+}
+
+.banner__img{
+    width: 180px;
+    border: 2px solid #b8c0e0;
+}
+
+
+.actually__img {
+    width: 40px;
+}
+
+.text__primary {
+    color: #cad3f5;
+}
+
+.text__secondary {
+    color: #b8c0e0;
+}
+
+.btn__knowMore{
+    background-color:#8aadf4;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    color: #24273a;
+    padding: 0.4rem;
+    margin-top: 0.4rem;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.btn__knowMore:hover{
+    background-color: #8aadf49d;
+}
+
+.container__info{
+    position: relative;
+}
+
+.banner__editIcon{
+    position: absolute;
+    right: 0;
+    top: -4rem;
+    font-size: 1.3rem;
+}
+
+@media (max-width: 640px) {
+    .img__container{
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .banner__img{
+        width: 140px;
+    }
+}

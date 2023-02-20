@@ -1,0 +1,28 @@
+/* Login Styles */
+
+.auth {
+    padding: 10rem 0;
+    color: #fff;
+}
+
+.auth__container_form {
+    background-color: #1e2030;
+    padding: 2rem;
+    width: 30vw;
+    border-radius: 1rem;
+}
+
+.auth__form_input{
+    background-color: #24273a;
+    border: none;
+    outline: none;
+    color: #fff;
+    border-radius: 1rem;
+    padding: 0.4rem 0.6rem;
+}
+
+@media (max-width: 640px) {
+    .auth__container_form {
+        width: 80vw;
+    }
+}

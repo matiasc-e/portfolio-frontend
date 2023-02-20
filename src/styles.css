@@ -1,1 +1,102 @@
-/* You can add global styles to this file, and also import other style files */
+
+/* General Styles */
+
+body {
+    background-color: #24273a;
+    color: #fff;
+
+}
+
+.btn__plus {
+    border: none;
+    background-color: inherit;
+    color: #fff;
+}
+
+.containerSection {
+    margin: 4.5rem 10rem 0 10rem;
+}
+
+.containerTitle {
+  
+}
+
+.title__section{
+    margin: 0 10rem;
+}
+
+.section__img{
+    width: 80px;
+}
+
+
+.border__bottom {
+    border-bottom: 1px solid #b8c0e0;
+}
+
+i {
+    border-radius: 2rem;
+    padding: 0.6rem;
+    box-sizing: content-box;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+i:hover {
+ background-color: #363a4f;
+}
+
+
+/* Modal Styles */
+
+.modal__background{
+    background-color: #24273a;
+}
+
+.moda__inputs {
+    background-color: #1e2030;
+    padding: 0.4rem 0.8rem;
+    border: none;
+
+    outline: none;
+    color: #fff;
+    border-radius: 1rem;
+    resize: none;
+}
+
+
+
+
+
+/* Footer Styles */
+
+.footer{
+    background-color: #1e2030;
+    color: #fff;
+}
+
+
+
+/* Responsive Web */
+
+@media (max-width: 640px) {
+   
+
+    .containerSection{
+        margin: 4rem 0;
+    }
+
+
+    .title__section{
+        margin: 0;
+    }
+
+    .containerTitle {
+        margin-bottom: 0.4rem;
+    }
+
+    .moda__inputs {
+        width: 60vw;
+    }
+  
+}
