@@ -15,4 +15,9 @@ export class ProyectsComponent {
       this.info = d.proyects
     })
   }
+
+  addProyects() {
+    
+  }
+
 }

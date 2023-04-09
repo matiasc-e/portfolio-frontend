@@ -17,9 +17,6 @@ body {
     margin: 4.5rem 10rem 0 10rem;
 }
 
-.containerTitle {
-  
-}
 
 .title__section{
     margin: 0 10rem;
@@ -71,6 +68,7 @@ i:hover {
 /* Footer Styles */
 
 .footer{
+        
     background-color: #1e2030;
     color: #fff;
 }

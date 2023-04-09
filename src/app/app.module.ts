@@ -15,7 +15,8 @@ import { AddSkillsComponent } from './components/modals/add-skills/add-skills.co
 import { AddProyectsComponent } from './components/modals/add-proyects/add-proyects.component';
 import { HomeComponent } from './pages/home/home.component';
 import { EditPerfilComponent } from './pages/edit-perfil/edit-perfil.component';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import { FooterComponent } from './components/footer/footer.component'
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { HttpClientModule } from '@angular/common/http'
     AddSkillsComponent,
     AddProyectsComponent,
     HomeComponent,
-    EditPerfilComponent
+    EditPerfilComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
