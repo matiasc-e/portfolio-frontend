@@ -1,5 +1,10 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { InfoService } from 'src/app/services/info.service';
+import { Education } from 'src/app/models/education';
+import { User } from 'src/app/models/user';
+import { BannerService } from 'src/app/services/banner.service';
+import { EducationService } from 'src/app/services/education.service';
+
 
 @Component({
   selector: 'app-banner',
@@ -7,12 +12,25 @@ import { InfoService } from 'src/app/services/info.service';
   styleUrls: ['./banner.component.css']
 })
 export class BannerComponent {
-  data:any
-  constructor(private dataPortafolio:InfoService){}
+  public user : User | undefined;
+  public education : Education | undefined;
+  constructor(private dataUser:BannerService, private dataEducation:EducationService){}
 
   ngOnInit():void {
-    this.dataPortafolio.getData().subscribe(d => {
-      this.data = d.banner
+    this.getUser()
+    this.getEducation()
+  }
+
+  public getUser(): void {
+    this.dataUser.getUser().subscribe({
+      next : (data : User) => this.user = data,
+      error: (error : HttpErrorResponse) => console.error(error)
+    })
+  }
+
+  public getEducation() : void {
+    this.dataEducation.getEducation().subscribe({
+      next : (data : Education[]) => this.education = data[0]
     })
   }
 
