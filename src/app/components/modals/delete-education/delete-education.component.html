@@ -1,0 +1,20 @@
+<div class="modal fade" id="btn-delete-education" tabindex="-1" role="dialog" aria-labelledby="btn-delete" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content text-warning  modal__background">
+      <div class="modal-header">
+        <h5 class="modal-title" id="btn-delete">Eliminar {{deleteEducation?.titleEdu}}</h5>
+        <button type="button" class="close btn__close " data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body flex justify-content-center w-full text-white">
+        ¿Estás seguro que quieres borrar la educacion
+        <span class="text-warning">{{ deleteEducation?.titleEdu }}</span>?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="delete-education-form">No</button>
+        <button type="button" class="btn btn-warning" (click)="onDeleteEducation(deleteEducation!.idEdu)">Si, eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>

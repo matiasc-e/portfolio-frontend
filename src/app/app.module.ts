@@ -18,6 +18,8 @@ import { EditPerfilComponent } from './pages/edit-perfil/edit-perfil.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FooterComponent } from './components/footer/footer.component'
 import { FormsModule } from '@angular/forms';
+import { EditEducationComponent } from './components/modals/edit-education/edit-education.component';
+import { DeleteEducationComponent } from './components/modals/delete-education/delete-education.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { FormsModule } from '@angular/forms';
     AddProyectsComponent,
     HomeComponent,
     EditPerfilComponent,
-    FooterComponent
+    FooterComponent,
+    EditEducationComponent,
+    DeleteEducationComponent
   ],
   imports: [
     BrowserModule,

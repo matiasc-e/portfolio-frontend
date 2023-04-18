@@ -6,19 +6,25 @@
         data-bs-toggle="modal" data-bs-target="#btn-plus-education"> <i class="fa-solid fa-plus"></i>
         </button>
     </div>
-    <div class="d-flex justify-content-between title__section mb-4 align-items-start" *ngFor="let data of info">
+    <div class="d-flex justify-content-between title__section mb-4 align-items-start" *ngFor="let education of educations">
         <div class="d-flex gap-2 align-items-start">
-            <img [src]="data.image" class="section__img"/>
+            <img [src]="education.picEdu" class="section__img"/>
            <div class="d-flex flex-column gap-1">
-             <h4 class="m-0">{{data.title}}</h4>
-             <p class="m-0">{{data.post}}</p>
-             <p class="m-0">{{data.initial}}-{{data.ending}}</p>
+             <h4 class="m-0">{{education.titleEdu}}</h4>
+             <p class="m-0">{{education.descEdu}}</p>
+             <p class="m-0">{{education.startDateEdu}}-{{education.endDateEdu}}</p>
            </div>
         </div>
         <div class="d-flex  gap-3">
-            <i class="fa-solid fa-pencil "></i>
-            <i class="fa-solid fa-trash"></i>
+            <button id='edit-button' (click)="onOpenModal('edit', education)" class="buttons__actions text-primary"><i class="fa-solid fa-pencil "></i></button>
+            <button id='edit-delete' (click)="onOpenModal('delete', education)" class="buttons__actions text-danger"> <i class="fa-solid fa-trash"></i></button>
         </div>
     </div>
 
 </section>
+
+
+<!-- Modal add Experience -->
+<app-add-education (educationAdded)="onActionEducation()"></app-add-education>
+<!-- Modal delete Experience -->
+<app-delete-education [deleteEducation]="deleteEducation" (educationDelete)="onActionEducation()"></app-delete-education>

@@ -1,8 +1,8 @@
 <section class="container mt-4">
     <div class="banner__header">
-        <img [src]="user?.banner" class="rounded mx-auto d-block w-75  shadow-md mg-fluid "/>
+        <img [src]="user?.infoBanner" class="rounded mx-auto d-block w-75  shadow-md mg-fluid "/>
         <div class="img__container d-flex align-items-end">
-            <img [src]="user?.icon" class="rounded-circle banner__img"/>
+            <img [src]="user?.infoPic" class="rounded-circle banner__img"/>
         </div>
     </div>
     <div class="d-flex flex-column flex-sm-row justify-content-between  containerSection mb-4 container__info">
@@ -10,14 +10,14 @@
             <a routerLink="edit-perfil" class="text-white">  <i class="fa-solid fa-pencil "></i></a>
         </div>
         <div class="d-flex flex-column gap-1 align-items-center align-items-sm-start mb-4">
-            <h2 class="text__primary d-flex gap-2 align-items-center m-0">{{user?.name}} {{user?.lastName}}</h2>
-            <p class="text__secondary  m-0">{{user?.position}}</p>
-            <p class="text__secondary m-0">Buenos Aires, Argentina</p>
+            <h2 class="text__primary d-flex gap-2 align-items-center m-0">{{user?.nameInfo}} {{user?.surnameInfo}}</h2>
+            <p class="text__secondary  m-0">{{user?.positionInfo}}</p>
+            <p class="text__secondary m-0">{{user?.ubicationInfo}}</p>
             <button class=" btn__knowMore">Saber Más</button>
         </div>
         <div class="d-flex flex-column gap-3">
             <div class="d-flex gap-2 align-items-center">
-                <img [src]="education?.imageEdu" class="rounded actually__img"/>
+                <img [src]="education?.picEdu" class="rounded actually__img"/>
                 <p class="m-0 text__secondary">{{education?.titleEdu}}</p>
             </div>
            
