@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { BannerService } from 'src/app/services/banner.service';
+import { Info } from 'src/app/models/info';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-edit-perfil',
@@ -6,5 +10,42 @@ import { Component } from '@angular/core';
   styleUrls: ['./edit-perfil.component.css']
 })
 export class EditPerfilComponent {
+
+  public info : Info | undefined;
+
+  constructor(private dataInfo:BannerService, private toastr: ToastrService){}
+
+
+  ngOnInit():void {
+    this.getInfo()
+  }
+
+  public getInfo(): void {
+    this.dataInfo.getInfo().subscribe({
+      next : (data : Info) => this.info = data,
+      error: (error : HttpErrorResponse) => console.error(error)
+    })
+  }
+
+  public onUpdateInfo(newInfoUpdate : Info) : void {
+    this.dataInfo.updateInfo(newInfoUpdate).subscribe({
+      next: (res : Info) => {
+        this.toastr.info('Tus datos han sido modifcado correctamente', 'Exito', {
+          progressBar: true,
+          closeButton: true,
+          positionClass: 'toast-bottom-right'
+        });
+        this.getInfo()
+      },
+      error : (error : HttpErrorResponse) => {
+        this.toastr.info('Algo salio mal!', 'Exito', {
+          progressBar: true,
+          closeButton: true,
+          positionClass: 'toast-bottom-right'
+        });
+        console.error(error.message)
+      }
+    })
+  }
 
 }

@@ -6,16 +6,28 @@
         data-bs-toggle="modal" data-bs-target="#btn-plus-proyects"> <i class="fa-solid fa-plus"></i>
         </button>
     </div>
-    <div class="d-flex justify-content-between title__section align-items-start mb-3" *ngFor="let data of info">
+    <div class="d-flex justify-content-between title__section align-items-start mb-3" *ngFor="let proyect of proyects">
         <div class="d-flex flex-column gap-1">
-            <h4 class="m-0 fs-5 text-info">{{data.title}}</h4>
-            <p class="m-0 text__secondary">{{data.description}}</p>
+            <h4 class="m-0 fs-5 text-info">{{proyect.titlePro}}</h4>
+            <p class="m-0 text__secondary">{{proyect.descPro}}</p>
+            <div class="d-flex gap-2 align-items-center">
+                <a [href]="proyect.linkDemoPro" target="_blank"><i class="fa-solid fa-laptop-code"></i></a>
+                <a [href]="proyect.linkRepoPro" target="_blank"><i class="fa-brands fa-github"></i></a>
+            </div>
         </div>
 
         <div class="d-flex  gap-3">
-            <i class="fa-solid fa-pencil "></i>
-            <i class="fa-solid fa-trash"></i>
+            <button class="buttons__actions btn__edit" (click)="onOpenModal('edit', proyect)">
+                <i class="fa-solid fa-pencil "></i>
+            </button>
+            <button class="buttons__actions btn__delete" (click)="onOpenModal('delete', proyect)">
+                <i class="fa-solid fa-trash"></i>
+            </button>
         </div>
     </div>
 
 </section>
+
+<app-add-proyects (proyectAdded)="onActionProyects()" ></app-add-proyects>
+<app-delete-proyects (proyectsDeleted)="onActionProyects()" [deleteProyects]="deleteProyects"></app-delete-proyects>
+<app-edit-proyects [editProyects]='editProyects'(updatedProyects)="onActionProyects()"  ></app-edit-proyects>

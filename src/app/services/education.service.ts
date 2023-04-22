@@ -19,6 +19,10 @@ export class EducationService {
     return this.http.post<Education>(`${this.apiServerUrl}/education`, newEducation)
   }
 
+  public updateEducation (educationToUpdate : Education) : Observable<Education> {
+    return this.http.put<Education>(`${this.apiServerUrl}/education`, educationToUpdate)
+  }
+
   public deleteEducation (idEdu : number) : Observable<void> {
     return this.http.delete<void>(`${this.apiServerUrl}/education/${idEdu}`)
   }

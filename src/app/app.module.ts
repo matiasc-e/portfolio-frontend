@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,6 +22,12 @@ import { FooterComponent } from './components/footer/footer.component'
 import { FormsModule } from '@angular/forms';
 import { EditEducationComponent } from './components/modals/edit-education/edit-education.component';
 import { DeleteEducationComponent } from './components/modals/delete-education/delete-education.component';
+import { DeleteExperienceComponent } from './components/modals/delete-experience/delete-experience.component';
+import { EditExperienceComponent } from './components/modals/edit-experience/edit-experience.component';
+import { DeleteProyectsComponent } from './components/modals/delete-proyects/delete-proyects.component';
+import { EditProyectsComponent } from './components/modals/edit-proyects/edit-proyects.component';
+import { DeleteSkillsComponent } from './components/modals/delete-skills/delete-skills.component';
+import { EditSkillsComponent } from './components/modals/edit-skills/edit-skills.component';
 
 @NgModule({
   declarations: [
@@ -38,13 +46,22 @@ import { DeleteEducationComponent } from './components/modals/delete-education/d
     EditPerfilComponent,
     FooterComponent,
     EditEducationComponent,
-    DeleteEducationComponent
+    DeleteEducationComponent,
+    DeleteExperienceComponent,
+    EditExperienceComponent,
+    DeleteProyectsComponent,
+    EditProyectsComponent,
+    DeleteSkillsComponent,
+    EditSkillsComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(), 
   ],
   providers: [],
   bootstrap: [AppComponent]

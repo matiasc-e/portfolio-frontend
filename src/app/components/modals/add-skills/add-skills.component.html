@@ -6,23 +6,24 @@
             <button type="button" class="btn-close text-white" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body ">
-            <form class="d-flex flex-column gap-4">
+            <form #addForm="ngForm" (ngSubmit)="onAddSkills(addForm)" class="d-flex flex-column gap-4">
                 <div class="d-flex flex-column gap-1">
-                    <label class="fs9">Agregar Nombre de la Habilidad</label>
-                    <input type="text" placeholder="javascript" class=".
+                    <label for="nameSk" class="fs9">Tecnologia</label>
+                    <input ngModel name="nameSk" id="nameSk" type="text" required placeholder="Javascript" class=".
                     moda__inputs"/>
                 </div>
                 <div class="d-flex flex-column gap-1">
-                    <label class="fs9">¿Del 1 al 100 cual capacitado te sientes?</label>
-                    <input type="number" placeholder="Ingresar nivel del skill" class=".
+                    <label for="percent" class="fs9">¿Del 1 al 100 cual capacitado te sientes?</label>
+                    <input ngModel name="percent" id="percent" type="number" max="100" min="1" required placeholder="Ingresar nivel del la tecnologia" class=".
                     moda__inputs"/>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="submit"  [disabled]="addForm.invalid" class="btn btn-warning">Agregar</button>
                 </div>
             </form>
         </div>
-        <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-warning">Agregar</button>
-        </div>
+       
     </div>
     </div>
 </div>

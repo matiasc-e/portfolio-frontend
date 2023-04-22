@@ -1,0 +1,78 @@
+<div class="modal fade" id="btn-edit-experience"  tabindex="-1" role="dialog" aria-hidden="true" aria-labelledby="btn-edit-experience" >
+    <div class="modal-dialog ">
+    <div class="modal-content text-warning  modal__background">
+        <div class="modal-header">
+            <h1 class="modal-title fs-6" id="btn-plus">Actualizar Experiencia</h1>
+            <button type="button" class="btn-close text-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form class="d-flex flex-column gap-4" #editForm="ngForm">
+                <div class="d-flex flex-column gap-1">
+                    <label for="picExp" class="fs9">Actualizar Logo de Experiencia</label>
+                    <input
+                    ngModel="{{editExperience?.picExp}}"
+                    required
+                    id="picExp"
+                    name="picExp" 
+                    type="text" placeholder="https://imageupload.com" class=".
+                    moda__inputs"/>
+                    <input
+                    type="hidden"
+                    ngModel="{{ editExperience?.idExp }}"
+                    name="idExp"
+                    class="form-control"
+                    id="idExp1"
+                    placeholder=""
+                  />
+                </div>
+                <div class="d-flex flex-column gap-1">
+                    <label for="titleExp" class="fs9  ">Actualizar Nombre de la Experiencia</label>
+                    <input
+                    ngModel="{{editExperience?.titleExp}}"
+                    required
+                    id="titleExp"
+                    name="titleExp" 
+                    type="text" placeholder="Argentina Programa" class=".
+                    moda__inputs"/>
+                </div>
+                <div class="d-flex flex-column gap-1">
+                    <label for="descExp" class="fs9  ">Tema tratado</label>
+                    <input
+                    ngModel="{{editExperience?.descExp}}"
+                    required
+                    id="descExp"
+                    name="descExp" 
+                    type="text" placeholder="Programacion" class=".
+                    moda__inputs"/>
+                </div>
+                <div class="d-flex flex-column gap-1">
+                    <label for="startDateExp" class="fs9  ">Periodo de Inicio</label>
+                    <input
+                    ngModel="{{editExperience?.startDateExp}}"
+                    required
+                    id="startDateExp"
+                    name="startDateExp" 
+                    type="date" placeholder="dd/mm/aaaa" class=".
+                    moda__inputs"/>
+                </div>
+                <div class="d-flex flex-column gap-1">
+                    <label for="endDateExp" class="fs9  ">Periodo Fin</label>
+                    <input
+                    ngModel="{{editExperience?.endDateExp}}"
+                    required
+                    id="endDateExp"
+                    name="endDateExp" 
+                    type="date" placeholder="dd/mm/aaaa" class=".
+                    moda__inputs"/>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="edit-experience-form">Cerrar</button>
+                    <button
+                    (click)="onUpdateExperience(editForm.value)"
+                     type="submit" class="btn btn-warning">Actualizar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+</div>

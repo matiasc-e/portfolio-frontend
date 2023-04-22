@@ -3,6 +3,6 @@ export interface Education {
     titleEdu : string
     descEdu : string
     picEdu : string
-    startDateEdu : number
-    endDateEdu : number
+    startDateEdu : string
+    endDateEdu : string
 }

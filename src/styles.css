@@ -1,3 +1,5 @@
+@import 'ngx-toastr/toastr';
+
 
 /* General Styles */
 
@@ -11,6 +13,14 @@ body {
     border: none;
     background-color: inherit;
     color: #fff;
+}
+
+.btn__delete {
+    color : #fa837a
+}
+
+.btn__edit {
+    color: #7abcfa;
 }
 
 .containerSection {
@@ -44,6 +54,8 @@ i:hover {
 }
 
 
+
+
 /* Modal Styles */
 
 .modal__background{
@@ -57,7 +69,7 @@ i:hover {
 
     outline: none;
     color: #fff;
-    border-radius: 1rem;
+    border-radius: 0.4rem;
     resize: none;
 }
 

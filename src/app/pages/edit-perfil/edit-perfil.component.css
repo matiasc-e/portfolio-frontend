@@ -1,5 +1,35 @@
 /* Styles EditPerfil */
 
 .edit__perfil__container{
-    padding: 3rem 0;
+    padding: 8rem 4rem;
+    margin: 0;
+}
+
+.icon__image_edit{
+    width: 100%;
+    object-fit: cover;
+    border-radius: 0.4rem;
+}
+
+.banner__img_edit{
+    width: 100%;
+    border-radius: 0.4rem;
+    object-fit: cover;
+}
+
+.about__me{
+    background-color: #1e2030;
+    padding: 0.8rem;
+    color: #CFCFCF;
+    border-radius: 0.4rem;
+}
+
+.text__secondary{
+     color: #CFCFCF;
+}
+
+@media (max-width: 640px) {
+    .edit__perfil__container{
+        padding: 4rem 2rem;
+    }
 }

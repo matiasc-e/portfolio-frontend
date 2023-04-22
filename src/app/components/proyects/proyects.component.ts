@@ -1,5 +1,7 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { InfoService } from 'src/app/services/info.service';
+import { Proyects } from 'src/app/models/proyects';
+import { ProyectsService } from 'src/app/services/proyects.service';
 
 @Component({
   selector: 'app-proyects',
@@ -7,17 +9,41 @@ import { InfoService } from 'src/app/services/info.service';
   styleUrls: ['./proyects.component.css']
 })
 export class ProyectsComponent {
-  info: any
-  constructor(private dataPortafolio:InfoService){}
+  public proyects : Proyects[] = [];
+  public deleteProyects : Proyects | undefined;
+  public editProyects : Proyects | undefined;
+  constructor(private dataProyects:ProyectsService){}
+
+  public onActionProyects(): void {
+    this.getProyects();
+  }
 
   ngOnInit():any {
-    this.dataPortafolio.getData().subscribe(d => {
-      this.info = d.proyects
+    this.getProyects()
+  }
+
+  public getProyects () : void {
+    this.dataProyects.getProyects().subscribe({
+      next: (res : Proyects[]) => this.proyects = res,
+      error : (error : HttpErrorResponse) => console.error(error.message)
     })
   }
 
-  addProyects() {
-    
+  public onOpenModal(mode: string, proyects : Proyects) : void {
+    const container = document.getElementById('main-container');
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.style.display = 'none';
+    button.setAttribute('data-bs-toggle', 'modal');
+    if (mode === 'delete') {
+      this.deleteProyects = proyects;
+      button.setAttribute('data-bs-target', '#btn-delete-proyects');
+    } else if (mode === 'edit') {
+      this.editProyects = proyects;
+      button.setAttribute('data-bs-target', '#btn-edit-proyects');
+    }
+    container?.appendChild(button);
+    button.click();
   }
 
 }

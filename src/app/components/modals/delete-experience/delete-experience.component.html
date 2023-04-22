@@ -1,0 +1,20 @@
+<div class="modal fade" id="btn-delete-experience" tabindex="-1" role="dialog" aria-labelledby="btn-delete" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content text-warning  modal__background">
+      <div class="modal-header">
+        <h5 class="modal-title" id="btn-delete">Eliminar {{deleteExperience?.titleExp}}</h5>
+        <button type="button" class="close btn__close " data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body flex justify-content-center w-full text-white">
+        ¿Estás seguro que quieres borrar la experiencia
+        <span class="text-warning">{{ deleteExperience?.titleExp }}</span>?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="delete-experience-form">No</button>
+        <button type="button" class="btn btn-danger" (click)="onDeleteExperience(deleteExperience!.idExp)">Si, eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -25,7 +25,7 @@ export class ExperienceService {
   }
 
   deleteExperience(id : number):Observable<void> {
-    return this.http.delete<void>(`${this.apiServerUrl}/${id}`)
+    return this.http.delete<void>(`${this.apiServerUrl}/experience/${id}`)
   }
 
 }

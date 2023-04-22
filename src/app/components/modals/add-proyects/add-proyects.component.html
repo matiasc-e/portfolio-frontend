@@ -2,28 +2,59 @@
     <div class="modal-dialog ">
     <div class="modal-content text-warning  modal__background">
         <div class="modal-header">
-            <h1 class="modal-title fs-6 text__primary" id="staticBackdropLabel">Agregar Proyectos</h1>
+            <h1 class="modal-title fs-6 text__primary" id="staticBackdropLabel">Agregar Proyecto</h1>
             <button type="button" class="btn-close text-white" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body ">
-            <form class="d-flex flex-column gap-4">
+            <form #addForm="ngForm" (ngSubmit)="onAddProyects(addForm)" class="d-flex flex-column gap-4">
+                
                 <div class="d-flex flex-column gap-1">
-                    <label class="fs9">Agregar Nombre del Proyecto</label>
-                    <input type="text" placeholder="Portafolio" class=".
+                    <label for="titlePro" class="fs9">Agregar Nombre del Proyecto</label>
+                    <input type="text" 
+                    ngModel
+                    required
+                    name="titlePro"
+                    id="titlePro"
+                    placeholder="Nombre del proyecto" class="
                     moda__inputs"/>
                 </div>
                 <div class="d-flex flex-column gap-1">
-                    <label class="fs9">Agregar Descripcion del Proyecto </label>
-                    <input type="text" placeholder="descripcion..." class=".
+                    <label for="descPro" class="fs9">Agregar una Descripcion del Proyecto</label>
+                    <input type="text" 
+                    ngModel
+                    required
+                    name="descPro"
+                    id="descPro"
+                    placeholder="Descripcion del proyecto" class="
                     moda__inputs"/>
                 </div>
-
+                <div class="d-flex flex-column gap-1">
+                    <label for="linkDemoPro" class="fs9">Link demo del Proyecto</label>
+                    <input type="text" 
+                    ngModel
+                    required
+                    name="linkDemoPro"
+                    id="linkDemoPro"
+                    placeholder="URL de la demo del proyecto" class="
+                    moda__inputs"/>
+                </div>
+                <div class="d-flex flex-column gap-1">
+                    <label for="linkRepoPro" class="fs9">Link del repositorio del Proyecto</label>
+                    <input type="text" 
+                    ngModel
+                    required
+                    name="linkRepoPro"
+                    id="linkRepoPro"
+                    placeholder="URL del repositorio del proyecto" class="
+                    moda__inputs"/>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="add-form-proyects">Cerrar</button>
+                    <button [disabled]="addForm.invalid" type="submit" class="btn btn-warning">Aceptar</button>
+                </div>
             </form>
         </div>
-        <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-warning">Agregar</button>
-        </div>
+        
     </div>
     </div>
 </div>

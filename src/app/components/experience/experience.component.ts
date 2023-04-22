@@ -16,10 +16,14 @@ export class ExperienceComponent {
 
   constructor(private dataExperience : ExperienceService){}
 
+  
+  public onActionExperience(): void {
+    this.getExperience();
+  }
+
   ngOnInit():void {
     this.getExperience()
   }
-
 
   public getExperience () : void {
     this.dataExperience.getExperience().subscribe({

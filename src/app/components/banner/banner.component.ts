@@ -14,15 +14,15 @@ import { EducationService } from 'src/app/services/education.service';
 export class BannerComponent {
   public user : Info | undefined;
   public education : Education | undefined;
-  constructor(private dataUser:BannerService, private dataEducation:EducationService){}
+  constructor(private dataInfo:BannerService, private dataEducation:EducationService){}
 
   ngOnInit():void {
-    this.getUser()
+    this.getInfo()
     this.getEducation()
   }
 
-  public getUser(): void {
-    this.dataUser.getUser().subscribe({
+  public getInfo(): void {
+    this.dataInfo.getInfo().subscribe({
       next : (data : Info) => this.user = data,
       error: (error : HttpErrorResponse) => console.error(error)
     })

@@ -11,11 +11,11 @@ export class BannerService {
   private apiServerUrl=environment.apiBaseUrl
   constructor(private http : HttpClient) { }
 
-  public getUser():Observable<Info> {
-    return this.http.get<Info>(`${this.apiServerUrl}/info/3`)
+  public getInfo():Observable<Info> {
+    return this.http.get<Info>(`${this.apiServerUrl}/info/1`)
   }
 
-  public updateUser(newUser : Info):Observable<Info> {
+  public updateInfo(newUser : Info):Observable<Info> {
     return this.http.put<Info>(`${this.apiServerUrl}/info`, newUser)
   }
 }

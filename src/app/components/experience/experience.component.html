@@ -8,20 +8,25 @@
     </div>
     <div class="d-flex justify-content-between title__section align-items-start" *ngFor="let experience of experiences">
         <div class="d-flex gap-2 align-items-start">
-            <img [src]="experience.imageExp" class="section__img"/>
+            <img [src]="experience.picExp" class="section__img"/>
            <div class="d-flex flex-column gap-1">
-             <h4 class="m-0">{{experience.titleExp}}r</h4>
+             <h4 class="m-0">{{experience.titleExp}}</h4>
              <p class="m-0">{{experience.descExp}}</p>
-             <p class="m-0">{{experience.dateInitialExp}} - {{experience.dateEndExp}}</p>
+             <p class="m-0">{{experience.startDateExp}} - {{experience.endDateExp}}</p>
            </div>
         </div>
-        <div class="d-flex  gap-3">
-           <button (click)="onOpenModal('edit', experience)"> <i class="fa-solid fa-pencil "></i></button>
-           <button (click)="onOpenModal('delete', experience)"><i class="fa-solid fa-trash"></i></button>
+        <div class="d-flex  gap-2">
+           <button (click)="onOpenModal('edit', experience)" class="buttons__actions btn__edit"> <i class="fa-solid fa-pencil "></i></button>
+           <button (click)="onOpenModal('delete', experience)" class="buttons__actions btn__delete"><i class="fa-solid fa-trash"></i></button>
         </div>
     </div>
 
 </section>
 
 <!-- Modal add Experience -->
-<app-add-experience></app-add-experience>
+<app-add-experience (experienceAdded)="onActionExperience()"></app-add-experience>
+<!-- Modal delete Experience -->
+<app-delete-experience [deleteExperience]="deleteExperience" (experienceDeleted)="onActionExperience()"></app-delete-experience>
+<!-- Modal edit Experience -->
+<app-edit-experience [editExperience]="editExperience" (updatedExperience)="onActionExperience()"></app-edit-experience>
+
