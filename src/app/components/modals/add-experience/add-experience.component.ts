@@ -21,7 +21,8 @@ export class AddExperienceComponent {
         this.experienceAdded.emit()
         this.toastr.success('Nueva experiencia creada!', 'Éxito', {
           progressBar: true,
-          closeButton: true
+          closeButton: true,
+          positionClass: 'toast-bottom-right'
         });
       },
       error : (error : HttpErrorResponse) => {
@@ -29,7 +30,8 @@ export class AddExperienceComponent {
         addForm.reset()
         this.toastr.error('Algo salio mal!', 'Error', {
         progressBar: true,
-        closeButton: true
+        closeButton: true,
+        positionClass: 'toast-bottom-right'
         });
       }
     })

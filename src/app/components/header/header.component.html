@@ -12,6 +12,7 @@
                 <i class="fa-brands fa-twitter fs-6 fs-md-1"></i>
             </li>
         </ul>
-        <a routerLink="/login" class="btn fs-5  btn-link text-warning"><i class="fa-regular fa-user fs-6 fs-md-1"></i></a>
+        <a routerLink="/login" class="btn fs-5  btn-link text-warning" *ngIf="!isLogged()"><i class="fa-regular fa-user fs-6 fs-md-1"></i></a>
+        <button  class="btn fs-5  btn-link text-danger" *ngIf="isLogged()" (click)="logout()"><i class="fa-solid fa-right-from-bracket"></i></button>
     </nav>
 </header>

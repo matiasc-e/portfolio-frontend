@@ -6,7 +6,7 @@
         </div>
     </div>
     <div class="d-flex flex-column flex-sm-row justify-content-between  containerSection mb-4 container__info">
-        <div class="banner__editIcon">
+        <div class="banner__editIcon" *ngIf="isLogged()">
             <a routerLink="edit-perfil" class="text-white">  <i class="fa-solid fa-pencil "></i></a>
         </div>
         <div class="d-flex flex-column gap-1 align-items-center align-items-sm-start mb-4">

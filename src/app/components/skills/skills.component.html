@@ -4,7 +4,7 @@
             <h3 class="text__primary ">Skills</h3>
         </div>
         <button type="button"
-        class="btn__plus" 
+        class="btn__plus" *ngIf="isLogged()"
         data-bs-toggle="modal" data-bs-target="#btn-plus-skills"> <i class="fa-solid fa-plus"></i>
         </button>
     </div>
@@ -13,7 +13,7 @@
             
             <div class="d-flex justify-content-between w-full">
                 <h3 class="progress-title">{{skill?.nameSk}} - {{skill?.percent}}%</h3>
-                <div class="d-flex  gap-2">
+                <div class="d-flex  gap-2" *ngIf="isLogged()">
                    <button (click)="onOpenModal('edit', skill)" class="buttons__actions btn__edit"> <i class="fa-solid fa-pencil "></i></button>
                    <button (click)="onOpenModal('delete', skill)" class="buttons__actions btn__delete"><i class="fa-solid fa-trash"></i></button>
                 </div>

@@ -21,7 +21,9 @@ export class AddEducationComponent {
         this.educationAdded.emit()
         this.toastr.success('Nueva educación creada!', 'Éxito', {
         progressBar: true,
-        closeButton: true
+        closeButton: true,
+        positionClass: 'toast-bottom-right'
+
         });
       },
       error : (error : HttpErrorResponse) => {
@@ -29,7 +31,9 @@ export class AddEducationComponent {
         addForm.reset()
           this.toastr.error('Algo salio mal!', 'Error', {
         progressBar: true,
-        closeButton: true
+        closeButton: true,
+        positionClass: 'toast-bottom-right'
+
         });
       }
     })

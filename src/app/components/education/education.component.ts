@@ -1,8 +1,8 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Education } from 'src/app/models/education';
+import { AuthService } from 'src/app/services/auth.service';
 import { EducationService } from 'src/app/services/education.service';
-import { InfoService } from 'src/app/services/info.service';
 
 @Component({
   selector: 'app-education',
@@ -13,7 +13,7 @@ export class EducationComponent {
   public educations : Education[] = [];
   public editEducation : Education | undefined;
   public deleteEducation : Education | undefined;
-  constructor(private dataEducation:EducationService){}
+  constructor(private dataEducation:EducationService, private authService : AuthService){}
 
   ngOnInit():void{
     this.getEducation()
@@ -47,5 +47,9 @@ export class EducationComponent {
     container?.appendChild(button);
     button.click();
   }
+
+  public isLogged () : boolean {
+    return this.authService.isLogged()
+   }
 
 }

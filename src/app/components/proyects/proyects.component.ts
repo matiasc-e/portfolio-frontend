@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Proyects } from 'src/app/models/proyects';
+import { AuthService } from 'src/app/services/auth.service';
 import { ProyectsService } from 'src/app/services/proyects.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class ProyectsComponent {
   public proyects : Proyects[] = [];
   public deleteProyects : Proyects | undefined;
   public editProyects : Proyects | undefined;
-  constructor(private dataProyects:ProyectsService){}
+  constructor(private dataProyects:ProyectsService, private authService : AuthService){}
 
   public onActionProyects(): void {
     this.getProyects();
@@ -44,6 +45,10 @@ export class ProyectsComponent {
     }
     container?.appendChild(button);
     button.click();
+  }
+
+  public isLogged () : boolean {
+    return this.authService.isLogged()
   }
 
 }

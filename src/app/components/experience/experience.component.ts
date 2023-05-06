@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Experience } from 'src/app/models/experience';
+import { AuthService } from 'src/app/services/auth.service';
 import { ExperienceService } from 'src/app/services/experience.service';
 
 @Component({
@@ -14,7 +15,7 @@ export class ExperienceComponent {
   public deleteExperience : Experience | undefined;
   public editExperience : Experience | undefined;
 
-  constructor(private dataExperience : ExperienceService){}
+  constructor(private dataExperience : ExperienceService, private authService : AuthService){}
 
   
   public onActionExperience(): void {
@@ -49,4 +50,9 @@ export class ExperienceComponent {
     container?.appendChild(button);
     button.click();
   }
+
+  public isLogged () : boolean {
+    return this.authService.isLogged()
+  }
+  
 }

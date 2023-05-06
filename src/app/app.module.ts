@@ -17,7 +17,7 @@ import { AddSkillsComponent } from './components/modals/add-skills/add-skills.co
 import { AddProyectsComponent } from './components/modals/add-proyects/add-proyects.component';
 import { HomeComponent } from './pages/home/home.component';
 import { EditPerfilComponent } from './pages/edit-perfil/edit-perfil.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FooterComponent } from './components/footer/footer.component'
 import { FormsModule } from '@angular/forms';
 import { EditEducationComponent } from './components/modals/edit-education/edit-education.component';
@@ -28,6 +28,8 @@ import { DeleteProyectsComponent } from './components/modals/delete-proyects/del
 import { EditProyectsComponent } from './components/modals/edit-proyects/edit-proyects.component';
 import { DeleteSkillsComponent } from './components/modals/delete-skills/delete-skills.component';
 import { EditSkillsComponent } from './components/modals/edit-skills/edit-skills.component';
+import { AuthInterceptor } from './helpers/auth.interceptor';
+import { LoginComponent } from './pages/login/login.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +55,7 @@ import { EditSkillsComponent } from './components/modals/edit-skills/edit-skills
     EditProyectsComponent,
     DeleteSkillsComponent,
     EditSkillsComponent,
-    
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +65,11 @@ import { EditSkillsComponent } from './components/modals/edit-skills/edit-skills
     BrowserAnimationsModule,
     ToastrModule.forRoot(), 
   ],
-  providers: [],
+  providers: [
+    {
+      provide : HTTP_INTERCEPTORS, useClass : AuthInterceptor, multi : true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

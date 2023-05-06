@@ -4,6 +4,8 @@ import { EditPerfilComponent } from './pages/edit-perfil/edit-perfil.component';
 import { HomeComponent } from './pages/home/home.component';
 
 import { LoginComponent } from './pages/login/login.component';
+import { EditGuard } from './helpers/edit.guard';
+import { LoginGuard } from './helpers/login.guard';
 
 
 const routes: Routes = [
@@ -14,11 +16,12 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
-
+    canActivate : [LoginGuard]
   },
   {
     path: 'edit-perfil',
-    component: EditPerfilComponent
+    component: EditPerfilComponent,
+    canActivate : [EditGuard]
   }
 ];
 

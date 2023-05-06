@@ -2,18 +2,18 @@
 <main class="d-flex flex-column container align-items-center justify-content-center auth">
     <div class="auth__container_form d-flex flex-column gap-3">
         <h2>INICIAR <span class="text-warning">SESION</span></h2>
-        <form class="d-flex flex-column gap-4 ">
+        <form class="d-flex flex-column gap-4"  #authForm="ngForm" (ngSubmit)="login(authForm)">
             <div class="d-flex flex-column gap-2 ">
                 <label class="">Usuario</label>
-                <input type="text" placeholder="@username33"
+                <input type="text" name='email' id='email' ngModel placeholder="@username33"
                 class="auth__form_input"/>
             </div>
             <div class="d-flex flex-column gap-2">
                 <label class="">Contraseña</label>    
-                <input type="password" placeholder="**********"
+                <input type="password" ngModel  name='password' id='password' placeholder="**********"
                 class="auth__form_input"/>
             </div>
-            <button class="btn btn-warning ">Iniciar Sesion</button>
+            <button class="btn btn-warning " type="submit">Iniciar Sesion</button>
         </form>
     </div>
 </main>

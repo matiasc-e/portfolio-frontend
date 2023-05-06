@@ -22,7 +22,9 @@ export class AddProyectsComponent {
         addForm.reset()
         this.toastr.success('Nuevo proyecto creado!', 'Éxito', {
           progressBar: true,
-          closeButton: true
+          closeButton: true,
+          positionClass: 'toast-bottom-right'
+
         });
       },
       error : (error : HttpErrorResponse) => {
@@ -30,7 +32,9 @@ export class AddProyectsComponent {
         addForm.reset()
         this.toastr.error('Algo salio mal!', 'Error', {
           progressBar: true,
-          closeButton: true
+          closeButton: true,
+          positionClass: 'toast-bottom-right'
+
         });
       }
     })

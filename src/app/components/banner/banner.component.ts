@@ -2,8 +2,10 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Education } from 'src/app/models/education';
 import { Info } from 'src/app/models/info';
+import { AuthService } from 'src/app/services/auth.service';
 import { BannerService } from 'src/app/services/banner.service';
 import { EducationService } from 'src/app/services/education.service';
+import { LoginService } from 'src/app/services/login.service';
 
 
 @Component({
@@ -14,7 +16,7 @@ import { EducationService } from 'src/app/services/education.service';
 export class BannerComponent {
   public user : Info | undefined;
   public education : Education | undefined;
-  constructor(private dataInfo:BannerService, private dataEducation:EducationService){}
+  constructor(private dataInfo:BannerService, private dataEducation:EducationService, private authService : AuthService){}
 
   ngOnInit():void {
     this.getInfo()
@@ -32,6 +34,10 @@ export class BannerComponent {
     this.dataEducation.getEducation().subscribe({
       next : (data : Education[]) => this.education = data[0]
     })
+  }
+
+  public isLogged () : boolean {
+   return this.authService.isLogged()
   }
 
 }

@@ -2,7 +2,7 @@
     <div class="d-flex justify-content-between containerSection align-items-center mt-4 containerTitle">
         <h3 class="text__primary mb-4">Proyectos</h3>
         <button type="button"
-        class="btn__plus" 
+        class="btn__plus" *ngIf="isLogged()"
         data-bs-toggle="modal" data-bs-target="#btn-plus-proyects"> <i class="fa-solid fa-plus"></i>
         </button>
     </div>
@@ -16,7 +16,7 @@
             </div>
         </div>
 
-        <div class="d-flex  gap-3">
+        <div class="d-flex  gap-3" *ngIf="isLogged()">
             <button class="buttons__actions btn__edit" (click)="onOpenModal('edit', proyect)">
                 <i class="fa-solid fa-pencil "></i>
             </button>

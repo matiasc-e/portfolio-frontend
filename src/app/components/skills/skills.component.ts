@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { SkillsService } from 'src/app/services/skills.service';
 import { Skills } from 'src/app/models/skills';
 import { HttpErrorResponse } from '@angular/common/http';
+import { AuthService } from 'src/app/services/auth.service';
 
 
 @Component({
@@ -14,7 +15,7 @@ export class SkillsComponent {
   public editSkills : Skills | undefined;
   public deleteSkills : Skills | undefined;
 
-  constructor(private dataSkills:SkillsService){}
+  constructor(private dataSkills:SkillsService, private authService : AuthService){}
 
 
   public onActionSkills() : void {
@@ -50,6 +51,10 @@ export class SkillsComponent {
     container?.appendChild(button);
     button.click();
   }
+
+  public isLogged () : boolean {
+    return this.authService.isLogged()
+   }
 
 
 }

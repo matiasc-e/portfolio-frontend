@@ -2,7 +2,7 @@
     <div class="d-flex justify-content-between containerSection align-items-center mt-4 containerTitle">
         <h3 class="text__primary mb-4">Educacion</h3>
         <button type="button"
-        class="btn__plus" 
+        class="btn__plus" *ngIf="isLogged()"
         data-bs-toggle="modal" data-bs-target="#btn-plus-education"> <i class="fa-solid fa-plus"></i>
         </button>
     </div>
@@ -15,7 +15,7 @@
              <p class="m-0">{{education.startDateEdu}} | {{education.endDateEdu}}</p>
            </div>
         </div>
-        <div class="d-flex  gap-2">
+        <div class="d-flex  gap-2" *ngIf="isLogged()">
             <button id='edit-button' (click)="onOpenModal('edit', education)" class="buttons__actions btn__edit"><i class="fa-solid fa-pencil "></i></button>
             <button id='edit-delete' (click)="onOpenModal('delete', education)" class="buttons__actions btn__delete"> <i class="fa-solid fa-trash"></i></button>
         </div>
