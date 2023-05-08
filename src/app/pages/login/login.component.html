@@ -4,7 +4,7 @@
         <h2>INICIAR <span class="text-warning">SESION</span></h2>
         <form class="d-flex flex-column gap-4"  #authForm="ngForm" (ngSubmit)="login(authForm)">
             <div class="d-flex flex-column gap-2 ">
-                <label class="">Usuario</label>
+                <label class="">Email</label>
                 <input type="text" name='email' id='email' ngModel placeholder="@username33"
                 class="auth__form_input"/>
             </div>
@@ -13,7 +13,8 @@
                 <input type="password" ngModel  name='password' id='password' placeholder="**********"
                 class="auth__form_input"/>
             </div>
-            <button class="btn btn-warning " type="submit">Iniciar Sesion</button>
+            <button class="btn btn-warning " type="submit" *ngIf="!loading">Iniciar Sesion</button>
+            <button class="btn btn-warning " type="button" disabled="true" *ngIf="!!loading">Cargando...</button>
         </form>
     </div>
 </main>

@@ -8,7 +8,7 @@ import { Info } from '../models/info';
   providedIn: 'root'
 })
 export class BannerService {
-  private apiServerUrl=environment.apiBaseUrl
+  private apiServerUrl=environment.apiURL
   constructor(private http : HttpClient) { }
 
   public getInfo():Observable<Info> {

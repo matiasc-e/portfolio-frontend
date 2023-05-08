@@ -50,7 +50,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="add-form-proyects">Cerrar</button>
-                    <button [disabled]="addForm.invalid" type="submit" class="btn btn-warning">Aceptar</button>
+                    <button [disabled]="addForm.invalid" *ngIf="!loading" type="submit" class="btn btn-warning">Aceptar</button>
+                    <button disabled="true" type="button" class="btn btn-warning" *ngIf="!!loading">Cargando...</button>
                 </div>
             </form>
         </div>

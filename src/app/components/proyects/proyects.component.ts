@@ -13,6 +13,7 @@ export class ProyectsComponent {
   public proyects : Proyects[] = [];
   public deleteProyects : Proyects | undefined;
   public editProyects : Proyects | undefined;
+  public loading : boolean = true
   constructor(private dataProyects:ProyectsService, private authService : AuthService){}
 
   public onActionProyects(): void {
@@ -25,7 +26,10 @@ export class ProyectsComponent {
 
   public getProyects () : void {
     this.dataProyects.getProyects().subscribe({
-      next: (res : Proyects[]) => this.proyects = res,
+      next: (res : Proyects[]) => {
+        this.proyects = res
+        this.loading = false
+      },
       error : (error : HttpErrorResponse) => console.error(error.message)
     })
   }

@@ -2,6 +2,10 @@
   margin-top: 200px;
 }
 
+.text__secondary{
+        color: #b8c0e0;
+}
+
 .buttons__actions {
     border : none;
     background: transparent;

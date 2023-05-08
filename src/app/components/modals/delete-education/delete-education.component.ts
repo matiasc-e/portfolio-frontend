@@ -12,13 +12,18 @@ import { ToastrService } from 'ngx-toastr';
 export class DeleteEducationComponent {
  @Input() deleteEducation : Education | undefined;
  @Output() educationDelete: EventEmitter<void> = new EventEmitter<void>()
+ public loading : boolean = false
+
  constructor(private dataEducation : EducationService,  private toastr: ToastrService){}
 
  public onDeleteEducation(idEdu : number) : void {
   const onClose = document.getElementById('delete-education-form')
+  this.loading = true
   this.dataEducation.deleteEducation(idEdu).subscribe({
     next : (res : void) => {
       this.educationDelete.emit()
+      this.loading = false
+
       this.toastr.success('Eliminado con exito', 'Éxito', {
           progressBar: true,
           closeButton: true,

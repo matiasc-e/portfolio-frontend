@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class ProyectsService {
 
-  private apiServerUrl=environment.apiBaseUrl 
+  private apiServerUrl=environment.apiURL 
 
   constructor(private http : HttpClient){}
 

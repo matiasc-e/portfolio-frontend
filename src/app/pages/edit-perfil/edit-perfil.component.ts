@@ -12,7 +12,8 @@ import { ToastrService } from 'ngx-toastr';
 export class EditPerfilComponent {
 
   public info : Info | undefined;
-
+  public loading : boolean = true
+  public loadUpdate : boolean = false
   constructor(private dataInfo:BannerService, private toastr: ToastrService){}
 
 
@@ -22,12 +23,16 @@ export class EditPerfilComponent {
 
   public getInfo(): void {
     this.dataInfo.getInfo().subscribe({
-      next : (data : Info) => this.info = data,
+      next : (data : Info) => {
+        this.info = data
+        this.loading = false
+      },
       error: (error : HttpErrorResponse) => console.error(error)
     })
   }
 
   public onUpdateInfo(newInfoUpdate : Info) : void {
+    this.loadUpdate = true
     this.dataInfo.updateInfo(newInfoUpdate).subscribe({
       next: (res : Info) => {
         this.toastr.info('Tus datos han sido modifcado correctamente', 'Exito', {
@@ -35,6 +40,7 @@ export class EditPerfilComponent {
           closeButton: true,
           positionClass: 'toast-bottom-right'
         });
+        this.loadUpdate = false
         this.getInfo()
       },
       error : (error : HttpErrorResponse) => {

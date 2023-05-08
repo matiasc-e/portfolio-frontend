@@ -14,6 +14,7 @@ export class SkillsComponent {
   public skills : Skills[] = [];
   public editSkills : Skills | undefined;
   public deleteSkills : Skills | undefined;
+  public loading : boolean = true
 
   constructor(private dataSkills:SkillsService, private authService : AuthService){}
 
@@ -29,7 +30,10 @@ export class SkillsComponent {
 
   public getSkills() : void {
     this.dataSkills.getSkills().subscribe({
-      next: (res : Skills[]) => this.skills = res,
+      next: (res : Skills[]) => {
+        this.skills = res
+        this.loading = false
+      },
       error : (error : HttpErrorResponse) => console.error(error.message)
     })
   }

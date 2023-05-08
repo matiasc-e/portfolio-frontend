@@ -12,13 +12,17 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class AddProyectsComponent {
   @Output() proyectAdded: EventEmitter<void> = new EventEmitter<void>()
+  public loading : boolean = false
   
   constructor(private dataProyects : ProyectsService , private toastr: ToastrService) {}
 
   public onAddProyects (addForm : NgForm) : void {
+    this.loading = true
     this.dataProyects.addProyects(addForm.value).subscribe({
       next: (res : Proyects) => {
         this.proyectAdded.emit()
+        this.loading = false
+
         addForm.reset()
         this.toastr.success('Nuevo proyecto creado!', 'Éxito', {
           progressBar: true,

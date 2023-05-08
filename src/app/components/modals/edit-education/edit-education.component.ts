@@ -12,14 +12,18 @@ import { ToastrService } from 'ngx-toastr';
 export class EditEducationComponent {
  @Input() editEducation : Education | undefined;
  @Output() educationUpdated: EventEmitter<void> = new EventEmitter<void>()
+ public loading : boolean = false
+
 
   constructor(private dateEducation : EducationService, private toastr: ToastrService){}
 
   public onUpdateEducation (educationToUpdate : Education) : void {
     const onClose = document.getElementById("edit-education-form")
+    this.loading = true
     this.dateEducation.updateEducation(educationToUpdate).subscribe({
       next : (res : Education) => {
         this.educationUpdated.emit()
+        this.loading = false
         onClose?.click()
         this.toastr.info(`${this.editEducation?.titleEdu}, ha sido modificado `, 'Exito', {
           progressBar: true,

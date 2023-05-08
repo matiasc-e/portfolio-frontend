@@ -13,13 +13,17 @@ export class DeleteSkillsComponent {
   @Input() deleteSkills : Skills | undefined;
   @Output() skillsDeleted: EventEmitter<void> = new EventEmitter<void>()
 
+  public loading : boolean = false
   constructor(private dataSkills : SkillsService, private toastr: ToastrService){}
 
   public onDeleteSkills (idSk : number) : void {
     const onClose = document.getElementById('delete-form-skills')
+    this.loading = true
     this.dataSkills.deleteSkills(idSk).subscribe({
       next : (res : void) => {
         this.skillsDeleted.emit()
+        this.loading = false
+
         onClose?.click()
          this.toastr.success('Eliminado con exito', 'Éxito', {
           progressBar: true,

@@ -57,7 +57,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="edit-form-proyects">Cerrar</button>
-                    <button type="submit" class="btn btn-warning" (click)="onUpdateProyects(editForm.value)">Aceptar</button>
+                    <button type="submit" class="btn btn-warning" (click)="onUpdateProyects(editForm.value)" *ngIf="!loading">Actualizar</button>
+                    <button type="button" disabled="true" class="btn btn-warning"  *ngIf="!!loading">Actualizando...</button>
                 </div>
             </form>
         </div>

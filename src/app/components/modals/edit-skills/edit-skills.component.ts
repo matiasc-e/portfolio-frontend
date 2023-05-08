@@ -13,15 +13,21 @@ export class EditSkillsComponent {
   @Input() editSkills : Skills | undefined;
   @Output() skillsUpdated: EventEmitter<void> = new EventEmitter<void>()
 
+  public loading : boolean = false
+  
   constructor(private dataSkills : SkillsService, private toastr: ToastrService){}
 
   onUpdateSkills(skillToUpdate : Skills) :void {
     const onClose = document.getElementById("update-skills-form")
+    this.loading = true
 
     this.dataSkills.updateSkills(skillToUpdate).subscribe({
       next: (res : Skills) => {
         this.skillsUpdated.emit()
+        this.loading = false
+
         onClose?.click()
+        
         this.toastr.info(`${this.editSkills?.nameSk}, ha sido modificado `, 'Exito', {
           progressBar: true,
           closeButton: true,

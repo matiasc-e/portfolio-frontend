@@ -69,7 +69,9 @@
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="edit-education-form">Cerrar</button>
                     <button
                     (click)="onUpdateEducation(editForm.value)"
-                     type="submit" class="btn btn-warning">Actualizar</button>
+                     type="submit" class="btn btn-warning" *ngIf="!loading">Actualizar</button>
+                     <button
+                     disabled="true" *ngIf="!!loading"  class="btn btn-warning">Actualizando...</button>
                 </div>
             </form>
         </div>

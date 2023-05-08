@@ -14,6 +14,7 @@ export class ExperienceComponent {
   public experiences : Experience[] = [];
   public deleteExperience : Experience | undefined;
   public editExperience : Experience | undefined;
+  public loading : boolean = true
 
   constructor(private dataExperience : ExperienceService, private authService : AuthService){}
 
@@ -28,7 +29,10 @@ export class ExperienceComponent {
 
   public getExperience () : void {
     this.dataExperience.getExperience().subscribe({
-      next : (res : Experience[]) => this.experiences = res,
+      next : (res : Experience[]) => {
+        this.experiences = res
+        this.loading = false
+      },
       error : (error : HttpErrorResponse) => console.error(error.message)
     })
   }

@@ -10,7 +10,13 @@
     bottom: -4rem;
 }
 
-.banner__img{
+.banner__header_top {
+    width: 75%;
+    height: 30vw;
+    object-fit: cover;
+}
+
+.banner__img_icon{
     width: 180px;
     border: 2px solid #b8c0e0;
 }

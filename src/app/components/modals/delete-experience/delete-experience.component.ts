@@ -12,12 +12,17 @@ import { ToastrService } from 'ngx-toastr';
 export class DeleteExperienceComponent {
   @Input() deleteExperience : Experience | undefined;
   @Output() experienceDeleted: EventEmitter<void> = new EventEmitter<void>()
+  public loading : boolean = false
+
   constructor(private dateExperience : ExperienceService,  private toastr: ToastrService){}
   public onDeleteExperience(idExp : number) : void {
     const onClose = document.getElementById('delete-experience-form')
+    this.loading = true
     this.dateExperience.deleteExperience(idExp).subscribe({
       next : (res : void) => {
         this.experienceDeleted.emit()
+        this.loading = false
+
         this.toastr.success('Eliminado con exito', 'Éxito', {
           progressBar: true,
           closeButton: true,

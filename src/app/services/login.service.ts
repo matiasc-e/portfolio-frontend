@@ -10,13 +10,13 @@ import { User } from '../models/user';
 })
 export class LoginService {
 
-  private apiServerUrl=environment.apiBaseLogin 
+  private apiServerUrl=environment.apiUrlLogin 
 
 
   constructor(private http : HttpClient) { }
 
   login (creds : User) {
-    return this.http.post(this.apiServerUrl , creds, {
+    return this.http.post(`${this.apiServerUrl}`, creds, {
       observe : 'response'
     }).pipe(map((res : HttpResponse<any>) => {
       const body = res.body
@@ -34,7 +34,8 @@ export class LoginService {
   }
 
   getToken() : string | undefined{
-    return window.localStorage.getItem('token')?.trim()
+    const token = window.localStorage.getItem('token');
+    return token ? token.trim() : undefined;
   }
 
 }

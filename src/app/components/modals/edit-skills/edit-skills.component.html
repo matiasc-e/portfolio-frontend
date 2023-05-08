@@ -27,7 +27,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="update-skills-form">Cerrar</button>
-                    <button type="submit" class="btn btn-warning">Actualizar</button>
+                    <button type="submit" class="btn btn-warning" *ngIf="!loading">Actualizar</button>
+                    <button type="button" disabled="true" *ngIf="!!loading"  class="btn btn-warning">Actualizando...</button>
                 </div>
             </form>
         </div>

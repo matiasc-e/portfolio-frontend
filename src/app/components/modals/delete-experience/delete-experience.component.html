@@ -13,7 +13,8 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="delete-experience-form">No</button>
-        <button type="button" class="btn btn-danger" (click)="onDeleteExperience(deleteExperience!.idExp)">Si, eliminar</button>
+        <button type="button" class="btn btn-danger" (click)="onDeleteExperience(deleteExperience!.idExp)" *ngIf="!loading">Si, eliminar</button>
+        <button type="button" class="btn btn-danger" *ngIf="!!loading" disabled="true">Eliminando...</button>
       </div>
     </div>
   </div>

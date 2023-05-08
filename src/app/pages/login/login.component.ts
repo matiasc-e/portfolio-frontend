@@ -19,11 +19,15 @@ export class LoginComponent {
     password : ''
   }
 
+  public loading : boolean = false
+
   constructor(private dataLogin : LoginService, private router : Router, private toastr: ToastrService){}
 
   public login(authForm : NgForm) {
+    this.loading = true
     this.dataLogin.login(authForm.value).subscribe({
       next : (res : any) => {
+        this.loading = false
         this.router.navigate(['/'])
         this.toastr.success('Se ha logueado correctamente', 'Exito', {
           progressBar: true,

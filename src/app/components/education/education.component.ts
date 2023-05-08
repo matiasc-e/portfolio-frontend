@@ -13,6 +13,7 @@ export class EducationComponent {
   public educations : Education[] = [];
   public editEducation : Education | undefined;
   public deleteEducation : Education | undefined;
+  public loading : boolean = true
   constructor(private dataEducation:EducationService, private authService : AuthService){}
 
   ngOnInit():void{
@@ -21,7 +22,10 @@ export class EducationComponent {
 
   public getEducation (): void {
     this.dataEducation.getEducation().subscribe({
-      next :(res : Education[]) => this.educations = res,
+      next :(res : Education[]) => {
+        this.educations = res
+        this.loading = false
+      },
       error: (error: HttpErrorResponse) =>  console.error(error.message)
     })
   }

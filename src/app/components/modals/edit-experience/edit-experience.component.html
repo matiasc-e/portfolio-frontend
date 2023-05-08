@@ -69,7 +69,10 @@
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="edit-experience-form">Cerrar</button>
                     <button
                     (click)="onUpdateExperience(editForm.value)"
-                     type="submit" class="btn btn-warning">Actualizar</button>
+                     type="submit" class="btn btn-warning" *ngIf="!loading">Actualizar</button>
+                     <button
+                      disabled="true" *ngIf="!!loading"  
+                      type="button" class="btn btn-warning">Actualizando...</button>
                 </div>
             </form>
         </div>

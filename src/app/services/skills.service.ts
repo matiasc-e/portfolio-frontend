@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class SkillsService {
-  private apiServerUrl=environment.apiBaseUrl 
+  private apiServerUrl=environment.apiURL 
   constructor(private http : HttpClient) { }
 
   getSkills():Observable<Skills[]> {

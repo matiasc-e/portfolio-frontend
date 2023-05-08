@@ -6,20 +6,34 @@
         data-bs-toggle="modal" data-bs-target="#btn-plus-education"> <i class="fa-solid fa-plus"></i>
         </button>
     </div>
-    <div class="d-flex justify-content-between title__section mb-4 align-items-start" *ngFor="let education of educations">
-        <div class="d-flex gap-2 align-items-start">
-            <img [src]="education.picEdu" class="section__img"/>
-           <div class="d-flex flex-column gap-1">
-             <h4 class="m-0">{{education.titleEdu}}</h4>
-             <p class="m-0">{{education.descEdu}}</p>
-             <p class="m-0">{{education.startDateEdu}} | {{education.endDateEdu}}</p>
-           </div>
+    <ng-container *ngIf="loading">
+        <div class="d-flex w-full justify-content-center align-items-center">
+            <div class="lds-ripple"><div></div><div></div></div>
         </div>
-        <div class="d-flex  gap-2" *ngIf="isLogged()">
-            <button id='edit-button' (click)="onOpenModal('edit', education)" class="buttons__actions btn__edit"><i class="fa-solid fa-pencil "></i></button>
-            <button id='edit-delete' (click)="onOpenModal('delete', education)" class="buttons__actions btn__delete"> <i class="fa-solid fa-trash"></i></button>
+    </ng-container>
+
+    <ng-container *ngIf="!!educations.length && !loading">
+        <div class="d-flex justify-content-between title__section mb-4 align-items-start" *ngFor="let education of educations">
+            <div class="d-flex gap-2 align-items-start">
+                <img [src]="education.picEdu" class="section__img"/>
+               <div class="d-flex flex-column gap-1">
+                 <h4 class="m-0">{{education.titleEdu}}</h4>
+                 <p class="m-0">{{education.descEdu}}</p>
+                 <p class="m-0 text__secondary ">{{education.startDateEdu}} - {{education.endDateEdu}}</p>
+               </div>
+            </div>
+            <div class="d-flex  gap-2" *ngIf="isLogged()">
+                <button id='edit-button' (click)="onOpenModal('edit', education)" class="buttons__actions btn__edit"><i class="fa-solid fa-pencil "></i></button>
+                <button id='edit-delete' (click)="onOpenModal('delete', education)" class="buttons__actions btn__delete"> <i class="fa-solid fa-trash"></i></button>
+            </div>
         </div>
-    </div>
+    </ng-container>
+
+    <ng-container *ngIf="!educations.length && !loading">
+        <div class="containerTitle d-flex w-full justify-content-center align-items-center">
+            <h3 class="h6 text__secondary">Usted no tiene educaciones para mostrar, agregue uno</h3>
+        </div>
+   </ng-container>
 
 </section>
 

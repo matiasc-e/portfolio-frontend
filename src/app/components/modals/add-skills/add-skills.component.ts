@@ -14,10 +14,11 @@ export class AddSkillsComponent {
 
   @Output() skillsAdded: EventEmitter<void> = new EventEmitter<void>()
 
-
+  public loading : boolean = false
   constructor(private dataSkills:SkillsService, private toastr : ToastrService){}
 
   public onAddSkills(addForm : NgForm) : void {
+    this.loading = true
     this.dataSkills.addSkills(addForm.value).subscribe({
       next:(res : Skills)=> {
         this.skillsAdded.emit()
@@ -27,6 +28,7 @@ export class AddSkillsComponent {
           closeButton: true,
           positionClass: 'toast-bottom-right'
         });
+        this.loading = false
       },
       error : (error : HttpErrorResponse) => {
         console.error(error.message)

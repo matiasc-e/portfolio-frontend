@@ -11,6 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class AddExperienceComponent {
   @Output() experienceAdded: EventEmitter<void> = new EventEmitter<void>()
+  public loading : boolean = false
 
   constructor(private dateExperience : ExperienceService , private toastr: ToastrService){}
 

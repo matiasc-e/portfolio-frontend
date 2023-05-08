@@ -1,32 +1,44 @@
-<section class="container mt-4">
-    <div class="banner__header">
-        <img [src]="user?.infoBanner" class="rounded mx-auto d-block w-75  shadow-md mg-fluid "/>
-        <div class="img__container d-flex align-items-end">
-            <img [src]="user?.infoPic" class="rounded-circle banner__img"/>
-        </div>
-    </div>
-    <div class="d-flex flex-column flex-sm-row justify-content-between  containerSection mb-4 container__info">
-        <div class="banner__editIcon" *ngIf="isLogged()">
-            <a routerLink="edit-perfil" class="text-white">  <i class="fa-solid fa-pencil "></i></a>
-        </div>
-        <div class="d-flex flex-column gap-1 align-items-center align-items-sm-start mb-4">
-            <h2 class="text__primary d-flex gap-2 align-items-center m-0">{{user?.nameInfo}} {{user?.surnameInfo}}</h2>
-            <p class="text__secondary  m-0">{{user?.positionInfo}}</p>
-            <p class="text__secondary m-0">{{user?.ubicationInfo}}</p>
-            <button class=" btn__knowMore">Saber Más</button>
-        </div>
-        <div class="d-flex flex-column gap-3">
-            <div class="d-flex gap-2 align-items-center">
-                <img [src]="education?.picEdu" class="rounded actually__img"/>
-                <p class="m-0 text__secondary">{{education?.titleEdu}}</p>
-            </div>
-           
-        </div>
 
-    </div>
+<section class="container mt-4">
+    <ng-container *ngIf="!loading">
+        <div class="banner__header">
+            <img [src]="user?.infoBanner" class="rounded mx-auto d-block banner__header_top  shadow-md mg-fluid "/>
+            <div class="img__container d-flex align-items-end">
+                <img [src]="user?.infoPic" class="rounded-circle banner__img_icon"/>
+            </div>
+        </div>
+        <div class="d-flex flex-column flex-sm-row justify-content-between  containerSection mb-4 container__info">
+            <div class="banner__editIcon" *ngIf="isLogged()">
+                <a routerLink="edit-perfil" class="text-white">  <i class="fa-solid fa-pencil "></i></a>
+            </div>
+            <div class="d-flex flex-column gap-1 align-items-center align-items-sm-start mb-4">
+                <h2 class="text__primary d-flex gap-2 align-items-center m-0">{{user?.nameInfo}} {{user?.surnameInfo}}</h2>
+                <p class="text__secondary  m-0">{{user?.positionInfo}}</p>
+                <p class="text__secondary m-0">{{user?.ubicationInfo}}</p>
+                <a href="https://www.linkedin.com/in/matias-e-cabrera/" target="_blank" class=" btn__knowMore">Saber Más</a>
+            </div>
+            <div class="d-flex flex-column gap-3">
+                <div class="d-flex gap-2 align-items-center">
+                    <img [src]="education?.picEdu" class=" actually__img"/>
+                    <p class="m-0 text__secondary">{{education?.titleEdu}}</p>
+                </div>
+               
+            </div>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="loading">
+        <div class="d-flex w-full justify-content-center align-items-center">
+            <div class="lds-ripple"><div></div><div></div></div>
+        </div>
+    </ng-container>
     <div class="title__section border__bottom ">
         <h3 class="text__primary">Acerca de</h3>
-        <p>{{user?.aboutMe}}</p>
+        <p *ngIf="!loading">{{user?.aboutMe}}</p>
+        <ng-container *ngIf="loading">
+            <div class="d-flex w-full justify-content-center align-items-center">
+                <div class="lds-ripple"><div></div><div></div></div>
+            </div>
+        </ng-container>
     </div>    
 
 </section>

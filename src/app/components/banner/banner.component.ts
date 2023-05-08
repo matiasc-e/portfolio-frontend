@@ -5,7 +5,6 @@ import { Info } from 'src/app/models/info';
 import { AuthService } from 'src/app/services/auth.service';
 import { BannerService } from 'src/app/services/banner.service';
 import { EducationService } from 'src/app/services/education.service';
-import { LoginService } from 'src/app/services/login.service';
 
 
 @Component({
@@ -16,6 +15,7 @@ import { LoginService } from 'src/app/services/login.service';
 export class BannerComponent {
   public user : Info | undefined;
   public education : Education | undefined;
+  public loading: boolean = true;
   constructor(private dataInfo:BannerService, private dataEducation:EducationService, private authService : AuthService){}
 
   ngOnInit():void {
@@ -25,7 +25,10 @@ export class BannerComponent {
 
   public getInfo(): void {
     this.dataInfo.getInfo().subscribe({
-      next : (data : Info) => this.user = data,
+      next : (data : Info) => {
+        this.user = data
+        this.loading = false
+      },
       error: (error : HttpErrorResponse) => console.error(error)
     })
   }

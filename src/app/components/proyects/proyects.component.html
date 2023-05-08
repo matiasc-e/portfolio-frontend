@@ -6,25 +6,40 @@
         data-bs-toggle="modal" data-bs-target="#btn-plus-proyects"> <i class="fa-solid fa-plus"></i>
         </button>
     </div>
-    <div class="d-flex justify-content-between title__section align-items-start mb-3" *ngFor="let proyect of proyects">
-        <div class="d-flex flex-column gap-1">
-            <h4 class="m-0 fs-5 text-info">{{proyect.titlePro}}</h4>
-            <p class="m-0 text__secondary">{{proyect.descPro}}</p>
-            <div class="d-flex gap-2 align-items-center">
-                <a [href]="proyect.linkDemoPro" target="_blank"><i class="fa-solid fa-laptop-code"></i></a>
-                <a [href]="proyect.linkRepoPro" target="_blank"><i class="fa-brands fa-github"></i></a>
+
+    <ng-container *ngIf="loading">
+        <div class="d-flex w-full justify-content-center align-items-center">
+            <div class="lds-ripple"><div></div><div></div></div>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="!!proyects.length && !loading">
+        <div class="d-flex justify-content-between title__section align-items-start mb-3" *ngFor="let proyect of proyects">
+            <div class="d-flex flex-column gap-1">
+                <h4 class="m-0 fs-5 text-info">{{proyect.titlePro}}</h4>
+                <p class="m-0 text__secondary">{{proyect.descPro}}</p>
+                <div class="d-flex gap-2 align-items-center">
+                    <a [href]="proyect.linkDemoPro" target="_blank"><i class="fa-solid fa-laptop-code"></i></a>
+                    <a [href]="proyect.linkRepoPro" target="_blank"><i class="fa-brands fa-github"></i></a>
+                </div>
+            </div>
+    
+            <div class="d-flex  gap-3" *ngIf="isLogged()">
+                <button class="buttons__actions btn__edit" (click)="onOpenModal('edit', proyect)">
+                    <i class="fa-solid fa-pencil "></i>
+                </button>
+                <button class="buttons__actions btn__delete" (click)="onOpenModal('delete', proyect)">
+                    <i class="fa-solid fa-trash"></i>
+                </button>
             </div>
         </div>
+    </ng-container>
 
-        <div class="d-flex  gap-3" *ngIf="isLogged()">
-            <button class="buttons__actions btn__edit" (click)="onOpenModal('edit', proyect)">
-                <i class="fa-solid fa-pencil "></i>
-            </button>
-            <button class="buttons__actions btn__delete" (click)="onOpenModal('delete', proyect)">
-                <i class="fa-solid fa-trash"></i>
-            </button>
+    <ng-container *ngIf="!proyects.length && !loading">
+        <div class="containerTitle d-flex w-full justify-content-center align-items-center">
+            <h3 class="h6 text__secondary">Usted no tiene proyectos para mostrar, agregue uno</h3>
         </div>
-    </div>
+   </ng-container>
 
 </section>
 

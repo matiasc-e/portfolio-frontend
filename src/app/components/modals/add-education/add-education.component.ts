@@ -12,12 +12,16 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class AddEducationComponent {
   @Output() educationAdded: EventEmitter<void> = new EventEmitter<void>()
+  public loading : boolean = false
+
   constructor(private dataEducation : EducationService, private toastr: ToastrService){}
 
   public onAddEducation(addForm : NgForm): void {
+    this.loading = true
     this.dataEducation.addEducation(addForm.value).subscribe({
       next: (res : Education) => {
         addForm.reset()
+        this.loading = false
         this.educationAdded.emit()
         this.toastr.success('Nueva educación creada!', 'Éxito', {
         progressBar: true,

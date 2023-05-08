@@ -12,14 +12,18 @@ import { ToastrService } from 'ngx-toastr';
 export class DeleteProyectsComponent {
   @Input() deleteProyects : Proyects | undefined;
   @Output() proyectsDeleted: EventEmitter<void> = new EventEmitter<void>()
+  public loading : boolean = false
 
   constructor(private dataProyects : ProyectsService, private toastr: ToastrService){}
 
   public onDeleteProyects (idPro : number) : void {
     const onClose = document.getElementById('delete-form-proyects')
+    this.loading = true
     this.dataProyects.deleteProyects(idPro).subscribe({
       next : (res : void) => {
         this.proyectsDeleted.emit()
+        this.loading = false
+
         onClose?.click()
          this.toastr.success('Eliminado con exito', 'Éxito', {
           progressBar: true,

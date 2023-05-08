@@ -60,7 +60,9 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="add-education-form">Cerrar</button>
                     <button [disabled]="addForm.invalid"
-                     type="submit" class="btn btn-warning">Agregar</button>
+                     type="submit" class="btn btn-warning" *ngIf="!loading">Agregar</button>
+                     <button disabled="true"
+                     type="button" class="btn btn-warning" *ngIf="loading">Cargando...</button>
                 </div>
             </form>
         </div>

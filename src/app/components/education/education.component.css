@@ -2,3 +2,8 @@
     border : none;
     background: transparent;
 }
+
+.text__secondary {
+    color: #b8c0e0;
+    font-size: 0.8rem;
+}

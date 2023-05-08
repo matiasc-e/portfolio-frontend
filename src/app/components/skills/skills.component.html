@@ -1,30 +1,39 @@
 <section class="container mb-4 ">
     <div class="d-flex justify-content-between containerSection align-items-center mt-4 containerTitle">
-        <div>
-            <h3 class="text__primary ">Skills</h3>
-        </div>
-        <button type="button"
-        class="btn__plus" *ngIf="isLogged()"
-        data-bs-toggle="modal" data-bs-target="#btn-plus-skills"> <i class="fa-solid fa-plus"></i>
-        </button>
+            <div>
+                <h3 class="text__primary ">Skills</h3>
+            </div>
+            <button type="button"
+            class="btn__plus" *ngIf="isLogged()"
+            data-bs-toggle="modal" data-bs-target="#btn-plus-skills"> <i class="fa-solid fa-plus"></i>
+            </button>
     </div>
-    <div class="title__section row ">
-        <div *ngFor="let skill of skills" class="col-md-6">
-            
-            <div class="d-flex justify-content-between w-full">
-                <h3 class="progress-title">{{skill?.nameSk}} - {{skill?.percent}}%</h3>
-                <div class="d-flex  gap-2" *ngIf="isLogged()">
-                   <button (click)="onOpenModal('edit', skill)" class="buttons__actions btn__edit"> <i class="fa-solid fa-pencil "></i></button>
-                   <button (click)="onOpenModal('delete', skill)" class="buttons__actions btn__delete"><i class="fa-solid fa-trash"></i></button>
+   <ng-container *ngIf="!!skills.length && !loading">
+        <div class="title__section row ">
+            <div *ngFor="let skill of skills" class="col-md-6">
+                
+                <div class="d-flex justify-content-between w-full">
+                    <h3 class="progress-title">{{skill?.nameSk}} - {{skill?.percent}}%</h3>
+                    <div class="d-flex  gap-2" *ngIf="isLogged()">
+                    <button (click)="onOpenModal('edit', skill)" class="buttons__actions btn__edit"> <i class="fa-solid fa-pencil "></i></button>
+                    <button (click)="onOpenModal('delete', skill)" class="buttons__actions btn__delete"><i class="fa-solid fa-trash"></i></button>
+                    </div>
+                </div>
+
+                <div class="progress yellow">
+                    <div class="progress-bar" [style.width.%]="skill?.percent" style="background:#ffc116;"></div>
                 </div>
             </div>
-
-            <div class="progress yellow">
-                <div class="progress-bar" [style.width.%]="skill?.percent" style="background:#ffc116;"></div>
-            </div>
         </div>
-    </div>
+   </ng-container>
+
+   <ng-container *ngIf="!skills.length && !loading">
+        <div class="containerTitle d-flex w-full justify-content-center align-items-center">
+            <h3 class="h6 text__secondary">Usted no tiene skills para mostrar, agregue uno</h3>
+        </div>
+   </ng-container>
 </section>
+
 
 <app-add-skills (skillsAdded)="onActionSkills()"></app-add-skills>
 <app-delete-skills (skillsDeleted)="onActionSkills()" [deleteSkills]="deleteSkills"></app-delete-skills>

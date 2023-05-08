@@ -13,14 +13,17 @@ export class EditExperienceComponent {
   @Input() editExperience : Experience | undefined
   @Output() updatedExperience: EventEmitter<void> = new EventEmitter<void>() 
 
+  public loading : boolean = false
   constructor(private dataExperience : ExperienceService, private toastr: ToastrService){}
 
 
   public onUpdateExperience (experienceToUpdate : Experience) : void {
     const onClose = document.getElementById("edit-experience-form")
+    this.loading = true
     this.dataExperience.updateExperience(experienceToUpdate).subscribe({
       next: (res : Experience) => {
         this.updatedExperience.emit()
+        this.loading = false
         onClose?.click()
         this.toastr.info(`${this.editExperience?.titleExp}, ha sido modificado `, 'Exito', {
           progressBar: true,
